@@ -9,13 +9,52 @@
 </head>
 <body>
     <div id="app">
-{{massage}}
+            <h1>v-for</h1>
+            <hr>
+            <ul>
+                <li  v-for="item in itemss">
+                    {{item}}
+                </li>
+            </ul>
+            <hr>
+            <ul>
+                <li v-for="(student,index) in studentss">
+                    {{index+1}}: {{student.name}}({{student.age}})
+                </li>
+            </ul>
     </div>
     <script type="text/javascript" >
         var app = new Vue({
             el: '#app',
             data: {
-                massage: '234'
+                items: [1,7,13,54,45],
+                students: [{
+                    name: "seth",
+                    age: 18
+                },{
+                    name: "daxiong",
+                    age: 14
+                }]
+            },
+            methods: {
+                arraySort: function(a,b){
+                    return a - b
+                },
+                studentSort: function(array,key){
+                    return array.sort(function(a,b){
+                        let x = a[key]
+                        let y = b[key]
+                        return (x < y) ? -1 : (x > y ? 1 : 0)
+                    })
+                }
+            },
+            computed: {
+                itemss: function(){
+                    return this.items.sort(this.arraySort)
+                },
+                studentss : function(){
+                    return this.studentSort(this.students,'age')
+                }
             }
         })
     </script>
