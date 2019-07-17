@@ -18,9 +18,12 @@
        <input type="text" v-model.lazy="message"><br/>
        <input type="text" v-model.number="message"><br/>
        <input type="text" v-model.trim="message">
+       <h3>文本域</h3>
+       <hr>
+       <textarea v-model="message"></textarea>
        <h3>单个checkbox框</h3>
        <hr>
-       <input type="checkbox" value="isTrue" v-model="isTrue">{{isTrue}}
+       <input type="checkbox"  v-model="isTrue">{{isTrue}}
        <h3>多个checkbox框</h3>
        <hr>
        <input type="checkbox" value="seth" v-model="myNicks">seth
