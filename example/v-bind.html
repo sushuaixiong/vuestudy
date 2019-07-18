@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>v-bind实例</title>
+    <style type="text/css">
+        .classA{
+            color: red;
+        }
+        .classB{
+            font-size: 120%
+        }
+    </style>
+</head>
+<body>
+   <h1>v-bind实例</h1> 
+   <hr>
+   <div id="app">
+       <p><img v-bind:src="imgUrl" width="200px"></p>
+       <p><a :href="hrefUrl" target="_blank">30岁的新垣结衣：治愈系笑容困境中真实的她</a></p>
+       <h3>v-bind单个属性</h3>
+       <hr>
+       <div :class="className">
+           css样式绑定
+       </div>
+       <h3>根据判断用某个class</h3>
+       <hr>
+       <div :class="{classA : isTrue}">
+            Class 与Style 绑定— Vue.js
+       </div>
+       <div :class="isTrue?classA:classB">
+            Class 与Style 
+       </div>
+       <p><input type="checkbox" v-model="isTrue">
+    <label for="isTrue">{{isTrue}}</label>
+    </p>
+    <h3>对象</h3>
+    <hr>
+    <div :style="colorObj">
+        对象
+    </div>
+   </div>
+   <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                imgUrl: 'https://img3.jiemian.com/101/original/20180611/15286924085213100_a640x364.jpg',
+                hrefUrl: 'https://m.jiemian.com/article/2218860.html',
+                className: 'classA',
+                classA: 'classA',
+                classB: 'classB',
+                isTrue: true,
+                colorObj: {
+                    color: 'red',
+                    fontSize: '120%'
+                }
+            }
+        })
+   </script>
+</body>
+</html>
