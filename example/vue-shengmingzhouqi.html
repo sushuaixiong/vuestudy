@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue-shengmingzhouqi</title>
+</head>
+<body>
+   <h1>vue-shengmingzhouqi</h1> 
+   <hr>
+   <div id="app">
+       <p >{{count}}</p>
+       <p><button @click="add">添加</button></p>
+    </div>
+    <p><button onclick="unbind()">销毁</button></p>
+   <script type="text/javascript">
+        function unbind(){
+            app.$destroy()
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                count: 0,
+                color: 'red'
+            },
+            methods: {
+                add: function(){
+                    this.count++;
+                }
+            },
+            beforeCreate: function(){
+                    console.log('1--beforeCreate')
+                },
+                created: function(){
+                    console.log('2--created')
+                },
+                beforeMount: function(){
+                    console.log('3--beforeMount')
+                },
+                mounted: function(){
+                    console.log('4--mounted')
+                },
+                beforeUpdate: function(){
+                    console.log('5--beforeUpdate')
+                },
+                updated: function(){
+                    console.log('6--updated')
+                },
+                activated: function(){
+                    console.log('7--activated')
+                },
+                deactivated: function(){
+                    console.log('8--deactivated')
+                },
+                beforeDestroy: function(){
+                    console.log('9--beforeDestroy')
+                },
+                destroyed: function(){
+                    console.log('10--destroyed')
+                }
+        })
+   </script>
+</body>
+</html>

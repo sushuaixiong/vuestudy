@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue-set</title>
+</head>
+<body>
+   <h1>vue-set</h1> 
+   <hr>
+   <div id="app">
+       <p>{{count}}</p>
+       <hr>
+       <ol>
+           <li v-for="arr in arrs">{{arr}}</li>
+       </ol>
+       <!-- <button><button @click="add">添加</button></p> -->
+    </div>
+    <p><button onclick="add()">添加</button></p>
+    <p><button onclick="update()">修改</button></p>
+   <script type="text/javascript">
+        function add(){
+            // app.count++
+            // Vue.set(outData,'count',2)
+            outData.count++
+        }
+        function update(){
+            // app.count++
+            Vue.set(outData.arrs,0,2)
+            // outData.count++
+        }
+        var outData = {
+                count: 0,
+                color: 'red',
+                arrs: [1,2,3]
+            }
+        var app = new Vue({
+            el: '#app',
+            data:outData 
+        })
+   </script>
+</body>
+</html>

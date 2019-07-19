@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue-extend</title>
+</head>
+<body>
+   <h1>vue-extend</h1> 
+   <hr>
+   <div id="app">
+       <author></author>
+   </div>
+   <script type="text/javascript">
+       var author = Vue.extend({
+           template: "<a :href='authorUrl' target='_blank'>{{authorName}}</a>",
+           data: function(){
+               return {
+                   authorName: 'seth',
+                   authorUrl: 'https://m.jiemian.com/article/2218860.html'
+               }
+           }
+       })
+       new author().$mount('author')
+   </script>
+</body>
+</html>
