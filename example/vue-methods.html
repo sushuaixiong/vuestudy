@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue-methods</title>
+</head>
+<body>
+   <h1>vue-methods</h1> 
+   <hr>
+   <div id="app">
+       <p>{{count}}</p>
+       <p><button @click="add(2,$event)"></button></p>
+   </div>
+   <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                count: 0
+            },
+            methods: {
+                add: function(num,event){
+                    this.count++;
+                    console.log(event)
+                }
+            }
+        })
+   </script>
+</body>
+</html>
