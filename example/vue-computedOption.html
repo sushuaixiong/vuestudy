@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue-computedOption</title>
+</head>
+<body>
+   <h1>vue-computedOption</h1> 
+   <hr>
+   <div id="app">
+       {{newPrice}}
+       <ul>
+           <li v-for="item in listss">
+               <p>{{item.title}}--{{item.date}}</p>
+           </li>
+          
+       </ul>
+   </div>
+   <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                price: '95.9',
+                lists:[{title:'车好多集团牵手汽车之家二手车，打通数据释放汽车消费潜力',date:'07-21'},
+                {title:'孙宇晨：不吃（巴菲特）午餐比吃午餐赚钱，赚钱是最重要的',date:'07-22'},
+                {title:'售12.98万 名爵6 20T Trophy高铁版上市',date:'07-23'}]
+            },
+            computed:{
+                listss: function(){
+                    return this.lists = this.lists.reverse()
+                },
+                newPrice: function(){
+                    return "￥"+ this.price
+                }
+            }
+        })
+   </script>
+</body>
+</html>
