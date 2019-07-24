@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue-exampleMethod</title>
+</head>
+<body>
+   <h1>vue-exampleMethod</h1> 
+   <hr>
+   <div id="app">
+      
+   </div>
+   <p><button onclick="destroy()">销毁</button></p>
+   <p><button onclick="reload()">更新数据</button></p>
+   <p><button onclick="nextTick()">修改数据</button></p>
+   <script type="text/javascript">
+        var seth = Vue.extend({
+            template: `<p>{{msg}}</p>`,
+            data: function(){
+                return {
+                    msg: 'i am seth'
+                }
+            },
+            mounted: function(){
+                console.log('组件被挂载');
+            },
+            updated: function(){
+                console.log('数据被修改了');
+            },
+            destroyed: function(){
+                console.log('组件被销毁');
+            }
+        })
+        var vm = new seth().$mount('#app');
+        function destroy(){
+            vm.$destroy()
+        }
+        function reload(){
+            vm.$forceUpdate()
+        }
+        function nextTick(){
+            vm.msg = 'hello'
+            vm.$nextTick(function(){
+                console.log('nextTick数据被修改了');
+            })
+        }
+
+   </script>
+</body>
+</html>

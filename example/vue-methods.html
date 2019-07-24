@@ -12,18 +12,32 @@
    <hr>
    <div id="app">
        <p>{{count}}</p>
-       <p><button @click="add(2,$event)"></button></p>
+       <p><button @click="add(2,$event)">添加</button></p>
+       <p><seth @click.native="reduce(1)"></seth></p>
+   </div>
+   <div>
+       <p><button onclick="app.reduce(1)">外部减少</button></p>
    </div>
    <script type="text/javascript">
+        var componentObj = {
+            template: '<p><button >减少</button></p>'
+        }
         var app = new Vue({
             el: '#app',
             data: {
                 count: 0
             },
+            components: {
+                "seth": componentObj
+            },
             methods: {
                 add: function(num,event){
-                    this.count++;
+                    this.count += num;
                     console.log(event)
+                },
+                reduce: function(num){
+                    console.log(1)
+                    this.count -= num;
                 }
             }
         })

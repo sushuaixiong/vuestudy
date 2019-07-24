@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue-watchOption</title>
+</head>
+<body>
+   <h1>vue-watchOption</h1> 
+   <hr>
+   <div id="app">
+       <p>{{wendu}}</p>
+       <p>{{jianyi}}</p>
+       <p><button @click="add()">添加温度</button></p>
+       <p><button @click="reduce()">减少温度</button></p>
+   </div>
+   <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                wendu: 0,
+                jianyi: '羽绒服'
+            },
+            methods:{
+                add: function(){
+                    this.wendu += 5
+                },
+                reduce: function(){
+                    this.wendu -= 4
+                }
+            },
+            watch: {
+                wendu: function(newVal,oldVal){
+                    if(parseInt(newVal)>25){
+                        this.jianyi = '裤头短袖'
+                    }else if(parseInt(newVal)<=25 && parseInt(newVal)>= 0){
+                        this.jianyi = '长裤长袖'
+                    }else{
+                        this.jianyi = '羽绒服'
+                    }
+                }
+            }
+        })
+        app.$watch('wendu',function(newVal,oldVal){
+            console.log(oldVal)
+            console.log(newVal)
+                    if(parseInt(newVal)>20){
+                        this.jianyi = '裤头短袖1'
+                    }else if(parseInt(newVal)<=20 && parseInt(newVal)>= 0){
+                        this.jianyi = '长裤长袖1'
+                    }else{
+                        this.jianyi = '羽绒服1'
+                    }
+                })
+   </script>
+</body>
+</html>

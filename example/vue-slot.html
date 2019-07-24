@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue-slot</title>
+</head>
+<body>
+   <h1>vue-slot</h1> 
+   <hr>
+   <div id="app">
+       <div>
+           <seth>
+               <template v-slot:blogurl>{{blog.blogUrl}}</template>
+               <template #author>{{blog.author}}</template>
+               <template #skill>{{blog.skill}}</template>
+           </seth>
+       </div>
+      
+   </div>
+   <div>
+        <template id="temp">
+             <div>
+                 <p>博客地址：<span><slot name="blogurl"></slot></span></p>
+                 <p>博客作者：<slot name="author"></slot></p>
+                 <p>博客所属：<slot name="skill"></slot></p>
+             </div>
+        </template>
+    </div>
+   <script type="text/javascript">
+        var seth = {
+            template: '#temp'
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                blog: {
+                    blogUrl: 'https://m.jiemian.com/article/2218860.html',
+                    author: 'seth',
+                    skill: 'java'
+                }
+            },
+            components: {
+                "seth": seth
+            }
+        })
+   </script>
+</body>
+</html>

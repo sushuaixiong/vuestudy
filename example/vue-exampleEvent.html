@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue-exampleEvent</title>
+</head>
+<body>
+   <h1>vue-exampleEvent</h1> 
+   <hr>
+   <div id="app">
+       <p>{{count}}</p>
+    </div>
+    <p><button onclick="add()">添加</button></p>
+    <p><button onclick="reduce()">减一次</button></p>
+    <p><button onclick="off()">关闭</button></p>
+   <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                count: 0
+            }
+        })
+        app.$on('add',function(){
+            this.count++;
+        })
+        app.$once('reduce',function(){
+            this.count--;
+        })
+        app.$off('off',function(){
+            this.count--;
+        })
+        function add(){
+            app.$emit('add');
+        }
+        function reduce(){
+            app.$emit('reduce');
+        }
+        function off(){
+            app.$emit('off');
+        }
+   </script>
+</body>
+</html>
